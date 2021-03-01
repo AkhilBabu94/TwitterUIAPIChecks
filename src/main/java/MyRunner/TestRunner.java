@@ -164,8 +164,8 @@ public class TestRunner extends TestBase {
         //Login to twitter
         driver.findElement(By.xpath("//span[text()='Following']")).click();
         driver.findElement(By.xpath("(//div[@dir='auto'][contains(.,'Log in')])[2]")).click();
-        driver.findElement(By.xpath("//input[contains(@type,'text')]")).sendKeys("im_akhilbabu");
-        driver.findElement(By.xpath("//input[@type='password']")).sendKeys("9891627655@Aa");
+        driver.findElement(By.xpath("//input[contains(@type,'text')]")).sendKeys("username");
+        driver.findElement(By.xpath("//input[@type='password']")).sendKeys("password");
         driver.findElement(By.xpath("(//div[@dir='auto'][contains(.,'Log in')])[1]")).click();
         driver.findElement(By.xpath("//span[text()='Following']")).click();
 
