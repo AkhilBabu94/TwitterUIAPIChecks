@@ -4,6 +4,7 @@ import Driver.TestBase;
 import Utils.TestUtils;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.Markup;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
@@ -103,7 +104,7 @@ public class TestRunner extends TestBase {
                     By element = By.xpath("//span[contains(.,'" + text + "')]");
                     waitForPresenceOfElement(element, 1);
                     System.out.println("element is founded successfully");
-                    TestUtils.takeScreenshot("TweetPic_"+integer+"_"+name);
+                    TestUtils.takeScreenshot("TweetPic_"+integer+"_"+name.replaceAll(" ",""));
 
                     //Data from UI
                     WebElement data =driver.findElement(By.xpath("//span[contains(.,'" + text + "')]/ancestor::div[3]/div[3]"));
@@ -232,6 +233,16 @@ public class TestRunner extends TestBase {
         };
         Markup m = MarkupHelper.createTable(data);
         test.pass(m);
+
+
+        test.log(Status.INFO,"The twitter handle is "+name);
+        test.log(Status.INFO,"The twitter handle URL is "+url);
+        test.log(Status.INFO,"The Snapshot link to the snapshot of landing page is "+pathMainPageScreenShoturl);
+        test.log(Status.INFO,"Top 10 tweet text are "+tweetText+" and Top 10 tweet ids are "+tweetIds);
+        test.log(Status.INFO,"Top 10 tweet screenshots are present in path "+top10tweetScreenShotsurl);
+        test.log(Status.INFO,"The Top 10 friends are "+top10Friends);
+        test.log(Status.INFO,"The Selected friend's verified account names are "+verifiedAccountNames);
+
         }
 
     public void waitForPresenceOfElement(By loc, int timeout) {
